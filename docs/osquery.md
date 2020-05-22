@@ -25,7 +25,7 @@
 * [Quickly disable Windows Defender on Windows 10 using PowerShell](https://archive.wmug.co.uk/wmug/b/pwin/posts/quickly-disable-windows-defender-on-windows-10-using-powershell)
 * [Winbeatlog version 7.7.0](https://www.elastic.co/downloads/beats/winlogbeat)
 * [Osquery version 4.0.2](https://osquery.io/downloads/official/4.0.2)
-* []()
+* [PowerShell -contains -like](https://www.itprotoday.com/powershell/powershell-contains)
 * []()
 * []()
 * []()
