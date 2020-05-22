@@ -1,0 +1,4 @@
+- paths:
+  - '/opt/zeek/logs/current/json_streaming_[a-z0-9A-z]*.log'
+exclude_files: ['.gz$']
+tags: ["zeek"]
