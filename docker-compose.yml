@@ -19,6 +19,26 @@ services:
     cpus: 4
     mem_limit: 1G
 
+  ############################################## Splunk ##############################################
+  # splunk:
+  #   build: 
+  #     context: .
+  #     dockerfile: docker/Dockerfile-splunk
+  #     args:
+  #       SPLUNK_VERSION: ${SPLUNK_VERSION}
+  #   restart: unless-stopped
+  #   container_name: splunk
+  #   networks:
+  #     - splunk-backend
+  #   environment:
+  #     - SPLUNK_START_ARGS="--accept-license"
+  #     - SPLUNK_PASSWORD=Changeme123!
+  #   volumes: 
+  #     - splunk-var:/opt/splunk/var
+  #     - splunk-etc:/opt/splunk/etc
+  #   cpus: 2
+  #   mem_limit: 1G
+
   ############################################## NGINX ##############################################
   nginx:
     container_name: 'nginx'
@@ -242,6 +262,9 @@ volumes:
   kafka-logs:
   zk-data:
   zk-logs:
+  splunk-var:
+  splunk-etc:
 
 networks: 
   kafka-backend:
+  splunk-backend:

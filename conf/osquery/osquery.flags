@@ -1,6 +1,7 @@
 --config_plugin=filesystem
 --config_path=C:\Program Files\osquery\osquery.conf
 --enable_monitor=false
+--events_optimize=true
 --events_expiry=1
 --events_max=2500
 --logger_plugin=filesystem
@@ -11,7 +12,6 @@
 --disable_watchdog=true
 --watchdog_level=-1
 --disable_events=false
---windows_event_channels=Microsoft-Windows-Windows Defender/Operational
 --allow_unsafe
 --extensions_autoload=C:\Program Files\osquery\extensions.load
 --extensions_interval=10
@@ -19,4 +19,3 @@
 --database_dump=false
 --schedule_default_interval=30
 --pack_refresh_interval=30
---allow_unsafe

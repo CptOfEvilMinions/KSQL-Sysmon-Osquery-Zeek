@@ -15,3 +15,9 @@
 1. `sudo systemctl restart filebeat`
 
 ## References
+* [Download Filebeat](https://www.elastic.co/downloads/beats/filebeat)
+* [Filebeat - Log Input](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-input-log.html#filebeat-input-log)
+* []()
+* []()
+* []()
+* []()
