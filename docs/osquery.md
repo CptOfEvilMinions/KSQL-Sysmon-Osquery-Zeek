@@ -26,6 +26,6 @@
 * [Winbeatlog version 7.7.0](https://www.elastic.co/downloads/beats/winlogbeat)
 * [Osquery version 4.0.2](https://osquery.io/downloads/official/4.0.2)
 * [PowerShell -contains -like](https://www.itprotoday.com/powershell/powershell-contains)
-* []()
+* [Process and socket auditing with osquery](https://osquery.readthedocs.io/en/stable/deployment/process-auditing/#osquery-events-optimization)
 * []()
 * []()

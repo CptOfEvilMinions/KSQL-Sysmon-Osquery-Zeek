@@ -19,6 +19,3 @@
 * [corelight/zeek-community-id](https://github.com/corelight/zeek-community-id)
 * []()
 * []()
-* []()
-* []()
-* []()

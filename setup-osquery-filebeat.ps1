@@ -19,7 +19,6 @@ if (!(Test-Path -Path $osqueryi_path)) {
 
   	# Download Osquery
   	[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-  	Write-Output https://pkg.osquery.io/windows/osquery-$OSQUERY_VERSION.msi
   	Invoke-WebRequest -Uri https://pkg.osquery.io/windows/osquery-$OSQUERY_VERSION.msi -OutFile osquery-$OSQUERY_VERSION.msi -MaximumRedirection 3
 
   	# Install Osquery
@@ -28,17 +27,17 @@ if (!(Test-Path -Path $osqueryi_path)) {
 		#### Download configs ####
 		$osquery_flags_path = "C:\Program Files\osquery\osquery.flags"
 		if (!(Test-Path -Path $osquery_flags_path)) {
-			Invoke-WebRequest -Uri https://raw.githubusercontent.com/CptOfEvilMinions/KSQL-Osquery-Zeek/master/conf/osquery/osquery.flags -OutFile $osquery_flags_path
+			Invoke-WebRequest -Uri https://raw.githubusercontent.com/CptOfEvilMinions/KSQL-Osquery-Zeek/master/conf/osquery/osquery.flags -OutFile $osquery_flags_path\osquery.flags
 		}
 
 		$osquery_conf_path = "C:\Program Files\osquery\osquery.conf"
 		if (!(Test-Path -Path $osquery_conf_path)) {
-			Invoke-WebRequest -Uri https://raw.githubusercontent.com/CptOfEvilMinions/KSQL-Osquery-Zeek/master/conf/osquery/osquery.conf -OutFile $osquery_conf_path
+			Invoke-WebRequest -Uri https://raw.githubusercontent.com/CptOfEvilMinions/KSQL-Osquery-Zeek/master/conf/osquery/osquery.conf -OutFile $osquery_conf_path\osquery.conf
 		}
 
 		$osquery_ext_path = "C:\Program Files\osquery\/extensions.load"
 		if (!(Test-Path -Path $osquery_ext_path)) {
-			Invoke-WebRequest -Uri https://raw.githubusercontent.com/CptOfEvilMinions/KSQL-Osquery-Zeek/master/conf/osquery/extensions.load -OutFile $osquery_ext_path
+			Invoke-WebRequest -Uri https://raw.githubusercontent.com/CptOfEvilMinions/KSQL-Osquery-Zeek/master/conf/osquery/extensions.load -OutFile $osquery_ext_path\extensions.load
 		}
 
 } else {
@@ -104,8 +103,7 @@ if (!(Test-Path -Path $filebeat_path)) {
 	(Get-Content -Path .\filebeat.yml -Raw) -replace "logstash_port","$LOGSTASH_PORT" | Set-Content -Path .\filebeat.yml
 
 	# Install Filebeat
-	Set-ExecutionPolicy Unrestricted
-	.\install-service-filebeat.ps1
+	powershell -Exec bypass -File .\install-service-filebeat.ps1
 
 	# Start service
 	Start-Service -Name filebeat
