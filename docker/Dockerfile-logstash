@@ -14,3 +14,7 @@ COPY conf/logstash/logstash.yml /usr/share/logstash/config/logstash.yml
 
 # Copy pipeline configs
 COPY conf/logstash/pipeline/ /usr/share/logstash/pipeline
+
+# Remove DEBUG config
+#RUN rm /usr/share/logstash/pipeline/30-output-kafka.conf
+RUN rm /usr/share/logstash/pipeline/DEBUG-31-output-kafka.conf
