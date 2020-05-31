@@ -19,26 +19,6 @@ services:
     cpus: 4
     mem_limit: 1G
 
-  ############################################## Splunk ##############################################
-  # splunk:
-  #   build: 
-  #     context: .
-  #     dockerfile: docker/Dockerfile-splunk
-  #     args:
-  #       SPLUNK_VERSION: ${SPLUNK_VERSION}
-  #   restart: unless-stopped
-  #   container_name: splunk
-  #   networks:
-  #     - splunk-backend
-  #   environment:
-  #     - SPLUNK_START_ARGS="--accept-license"
-  #     - SPLUNK_PASSWORD=Changeme123!
-  #   volumes: 
-  #     - splunk-var:/opt/splunk/var
-  #     - splunk-etc:/opt/splunk/etc
-  #   cpus: 2
-  #   mem_limit: 1G
-
   ############################################## NGINX ##############################################
   nginx:
     container_name: 'nginx'
@@ -49,6 +29,9 @@ services:
       args: 
         NGINX_VERSION: ${NGINX_VERSION}
     ports: 
+      - 80:80      # Splunk web
+      - 443:443    # Splunk web
+      - 8089:8089  # Splunk API
       - 8083:8083  # connect
       - 9021:9021  # control-center
       - 8082:8082  # rest-proxy
@@ -56,7 +39,9 @@ services:
     networks: 
       - default
       - kafka-backend
+      - splunk-backend
     depends_on: 
+      - splunk
       - connect
       - control-center
       - rest-proxy
@@ -136,15 +121,22 @@ services:
 
   ############################################## Connect ##############################################
   connect:
-    image: confluentinc/cp-kafka-connect:${CONFLUENT_VERSION}
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile-kafka-connect
+      args:
+        CONFLUENT_VERSION: ${CONFLUENT_VERSION}
+        KAFKA_CONNECT_SPLUNK: ${KAFKA_CONNECT_SPLUNK}
     restart: unless-stopped
     container_name: connect
     depends_on:
+      - splunk
       - zookeeper
       - broker
       - schema-registry
     networks: 
       - kafka-backend
+      - splunk-backend
     environment:
       CONNECT_BOOTSTRAP_SERVERS: 'broker:29092'
       CONNECT_REST_ADVERTISED_HOST_NAME: connect
@@ -235,8 +227,8 @@ services:
       - ksqldb-server
     entrypoint: /bin/sh
     tty: true
-    cpus: 1
-    mem_limit: 100M
+    cpus: 2
+    mem_limit: 500M
 
   ############################################## Kafka Rest proxy ##############################################
   rest-proxy:
@@ -256,6 +248,26 @@ services:
       KAFKA_REST_SCHEMA_REGISTRY_URL: 'http://schema-registry:8081'
     cpus: 2
     mem_limit: 300M 
+
+  ############################################## Splunk ##############################################
+  splunk:
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile-splunk
+      args:
+        SPLUNK_VERSION: ${SPLUNK_VERSION}
+    restart: unless-stopped
+    container_name: splunk
+    networks:
+      - splunk-backend
+    environment:
+      - SPLUNK_START_ARGS="--accept-license"
+      - SPLUNK_PASSWORD=Changeme123!
+    volumes: 
+      - splunk-var:/opt/splunk/var
+      - splunk-etc:/opt/splunk/etc
+    cpus: 2
+    mem_limit: 1G
 
 volumes: 
   kafka-data:

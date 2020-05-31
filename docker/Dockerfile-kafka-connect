@@ -1,0 +1,10 @@
+ARG CONFLUENT_VERSION
+FROM confluentinc/cp-kafka-connect:${CONFLUENT_VERSION}
+
+ARG KAFKA_CONNECT_SPLUNK
+
+# Install Kafka connector for Splunk
+RUN confluent-hub install --no-prompt splunk/kafka-connect-splunk:${KAFKA_CONNECT_SPLUNK}
+
+# Copy Splunk config
+COPY conf/kafka-connect/connect-splunk-standalone.properties /usr/share/confluent-hub-components/splunk-kafka-connect-splunk/etc/connect-distributed.properties

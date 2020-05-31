@@ -1,3 +1,5 @@
 conf/ssl/*.key
 conf/ssl/*.crt
 conf/ssl/*.pem
+conf/python/config.yml
+venv/

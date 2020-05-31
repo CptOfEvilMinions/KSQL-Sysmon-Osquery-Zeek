@@ -1,5 +1,10 @@
 # Osquery-Zeek-Kafka
 
+## Network diagram
+<p align="center">
+  <img src=".img/network_diagram.png">
+</p>
+
 ## .env
 This dockcer stack is pinned to certain versions in `.env`
 ```
@@ -8,6 +13,7 @@ ROOT_LOGLEVEL=ERROR
 LOGSTASH_VERSION=7.7.0
 NGINX_VERSION=1.18.0-alpine
 SPLUNK_VERSION=8.0.3-debian
+KAFKA_CONNECT_SPLUNK=1.2.0
 ```
 
 ## Generate TLS certificates

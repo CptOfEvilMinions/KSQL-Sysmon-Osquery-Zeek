@@ -16,3 +16,6 @@
 * [Unable to remove field form nested object during mutate](https://discuss.elastic.co/t/unable-to-remove-field-form-nested-object-during-mutate/34083)
 * [logstash-osquery-shipped-WEL.conf](https://gist.github.com/defensivedepth/39d97a43f001e5331c620d799bd89d33)
 * [Logstash Parsing – Windows Event Logs shipped by osquery](https://defensivedepth.com/2018/12/21/logstash-parsing-windows-eventlogs-shipped-by-osquery/)
+* [ISO8601 date format : malformed error message in elasticsearch](https://discuss.elastic.co/t/iso8601-date-format-malformed-error-message-in-elasticsearch/103250)
+* [How to Configure the Logstash Date filter](http://blog.eagerelk.com/how-to-configure-the-date-logstash-filter/)
+* [Logstash - datetime filter](https://www.elastic.co/guide/en/logstash/current/plugins-filters-date.html)

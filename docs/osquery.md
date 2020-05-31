@@ -27,5 +27,14 @@
 * [Osquery version 4.0.2](https://osquery.io/downloads/official/4.0.2)
 * [PowerShell -contains -like](https://www.itprotoday.com/powershell/powershell-contains)
 * [Process and socket auditing with osquery](https://osquery.readthedocs.io/en/stable/deployment/process-auditing/#osquery-events-optimization)
+* [palantir/osquery-configuratio- Linux/osquery.conf](https://github.com/palantir/osquery-configuration/blob/master/Classic/Servers/Linux/osquery.conf)
+* [Soquery docs -Results logs](https://osquery.readthedocs.io/en/stable/deployment/logging/)
+* [Manipulating plist and registry output in osquery](https://blog.kolide.com/manipulating-plist-and-registry-output-in-osquery-ad98b067c574)
+* [SQLite Having](https://www.sqlitetutorial.net/sqlite-having/)
+* [Commnad Line Flags](https://osquery.readthedocs.io/en/stable/installation/cli-flags/)
+* [Deploying Osquery Part 2 - The basics, cont.](https://blog.securelyinsecure.com/post/deploying-osquery-pt2/)
+* [Decorator queries](https://osquery.readthedocs.io/en/stable/deployment/configuration/#decorator-queries)
 * []()
 * []()
+
+

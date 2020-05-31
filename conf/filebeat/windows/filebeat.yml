@@ -27,6 +27,7 @@ filebeat.inputs:
     paths:
       - C:\Program Files\osquery\log\osqueryd.results.log*
       #- c:\programdata\elasticsearch\logs\*
+    tags: ["osquery"]
   
     # Exclude lines. A list of regular expressions to match. It drops the lines that are
     # matching any regular expression from the list.
